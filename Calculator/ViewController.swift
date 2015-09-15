@@ -32,10 +32,11 @@ class ViewController: UIViewController {
             enter()
         }
         switch operation{
-            case "×":performOperation(multiply)
-            case "−":performOperation(subtract)
-            case "+":performOperation(add)
-            case "÷":performOperation(devide)
+            case "×":performOperation { $0 * $1}
+            case "−":performOperation { $0 - $1}
+            case "+":performOperation { $0 + $1}
+            case "÷":performOperation { $0 / $1}
+            case "√":performOperation2 { sqrt($0)}
             default: break
             
             
@@ -49,20 +50,11 @@ class ViewController: UIViewController {
         }
     }
     
-    func multiply(op1: Double, op2: Double) ->Double {
-        return op1 * op2
-    }
-    
-    func subtract(op1: Double, op2: Double) ->Double {
-        return op2 - op1
-    }
-    
-    func add(op1: Double, op2: Double) ->Double {
-        return op1 + op2
-    }
-    
-    func devide(op1: Double, op2: Double) ->Double {
-        return op2 / op1
+    func performOperation2(operation: Double -> Double){
+        if operandStack.count >= 1{
+            displayValue = operation(operandStack.removeLast())
+            enter()
+        }
     }
     
     var operandStack: Array<Double> = Array<Double>()
