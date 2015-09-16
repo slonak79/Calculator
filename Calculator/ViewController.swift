@@ -15,31 +15,17 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var display: UILabel!
     
-    
-    
     @IBOutlet weak var operandDisplay: UILabel!
-    
-    
-    
     
     var userIsInTheMiddleOfTypingANumber: Bool = false
     
     @IBAction func appendDigit(sender: UIButton) {
         
         let digit = sender.currentTitle!
-  
-        
-        
-        
-        
-        
-        
 
         if userIsInTheMiddleOfTypingANumber {
             
             var canEnterDecimal = true
-            
-            
             
                 if digit == "π"{
                     println(pi.description)
@@ -54,7 +40,6 @@ class ViewController: UIViewController {
                         operandDisplay.text = operandDisplay.text! + " " +  digit
                     }
                 }
-            
             
             }
             else{
@@ -90,14 +75,11 @@ class ViewController: UIViewController {
             case "cos": performOperation2 { cos($0) }
                         operandDisplay.text = operandDisplay.text! + " " + "cos"
         
-            
-            
             default: break
             
             
         }
     }
-    
     
     
     func performOperation(operation: (Double, Double) -> Double){
